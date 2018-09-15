@@ -21,16 +21,5 @@ public class Message implements Serializable {
     public String getFrom() {
         return from;
     }
-
-    public String getTo() {
-        return to;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Message : %s\nFrom : %s\nTo : %s"
-                , message, from, to);
-
-    }
 }
 

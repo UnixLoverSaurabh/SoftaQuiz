@@ -3,7 +3,6 @@ package com.company;
 import javax.crypto.*;
 import java.io.*;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
@@ -60,15 +59,7 @@ public class Echoer extends Thread {
         } catch (IOException e){
             System.out.println("Ooops : " + e.getMessage());
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
+        } catch (NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | InvalidKeyException | NoSuchPaddingException e) {
             e.printStackTrace();
         } finally {
             try {

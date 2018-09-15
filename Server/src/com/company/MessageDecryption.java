@@ -32,15 +32,7 @@ public class MessageDecryption {
             System.out.println(new String(newPlainText, StandardCharsets.UTF_8));
             this.message = new String(newPlainText, StandardCharsets.UTF_8);
 
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
-        } catch (NoSuchPaddingException e) {
-            e.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeyException | NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
             e.printStackTrace();
         }
     }

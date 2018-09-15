@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dde68edb-0a7b-4f41-97a0-1d57a124c8aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ClientBoth/ClientBoth.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ClientBoth/src/com/company/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../EncryptionIBM/EncryptionIBM.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ServeBoth/ServeBoth.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../javaFX/Register/Register.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../javaFX/Video/Video.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientBoth/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientBoth/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientBoth/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientBoth/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServeBoth/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServeBoth/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServeBoth/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ServeBoth/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServeBoth/out/production/ServeBoth/com/company/Echoer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ServeBoth/out/production/ServeBoth/com/company/Echoer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServeBoth/out/production/ServeBoth/com/company/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/../ServeBoth/out/production/ServeBoth/com/company/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServeBoth/src/com/company/Echoer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServeBoth/src/com/company/Echoer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ServeBoth/src/com/company/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ServeBoth/src/com/company/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/MessageDecryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/MessageDecryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Echoer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Echoer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/MessageDecryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/MessageDecryption.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,6 +78,24 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1149662962">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -93,19 +103,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Echoer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="55" column="70" selection-start-line="55" selection-start-column="70" selection-end-line="55" selection-end-column="70" />
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,12 +112,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/Message.java">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Echoer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="653">
+              <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#342#343#0" expanded="true" />
+                <element signature="e#378#379#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/company/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#390#391#0" expanded="true" />
                 <element signature="e#420#421#0" expanded="true" />
               </folding>
             </state>
@@ -129,12 +142,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/MessageDecryption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+            <state relative-caret-position="663">
+              <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1318#1319#0" expanded="true" />
-                <element signature="e#1348#1349#0" expanded="true" />
+                <element signature="e#1738#1739#0" expanded="true" />
+                <element signature="e#1768#1769#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,8 +156,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/MessageEncryption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            <state>
+              <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -181,14 +194,14 @@
       <list>
         <option value="$PROJECT_DIR$/src/com/company/Frame.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
-        <option value="$PROJECT_DIR$/src/com/company/MessageDecryption.java" />
-        <option value="$PROJECT_DIR$/src/com/company/Message.java" />
         <option value="$PROJECT_DIR$/src/com/company/MessageEncryption.java" />
+        <option value="$PROJECT_DIR$/src/com/company/MessageDecryption.java" />
         <option value="$PROJECT_DIR$/src/com/company/Echoer.java" />
+        <option value="$PROJECT_DIR$/src/com/company/Message.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="683" />
     <option name="y" value="25" />
     <option name="width" value="683" />
@@ -228,7 +241,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535909821746" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537030638086" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -279,7 +292,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1366" height="743" extended-state="7" />
+    <frame x="0" y="25" width="1366" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.21060605" />
@@ -292,7 +305,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32932332" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32932332" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -316,10 +329,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/io/ObjectInputStream.class">
+    <entry file="file://$PROJECT_DIR$/src/com/company/MessageDecryption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="660" selection-start-line="660" selection-end-line="660" />
+        <state relative-caret-position="663">
+          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1738#1739#0" expanded="true" />
+            <element signature="e#1768#1769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -333,55 +351,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/Echoer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="653">
+          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/MessageDecryption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1318#1319#0" expanded="true" />
-            <element signature="e#1348#1349#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/MessageEncryption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="38" column="1" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+        <state>
+          <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Echoer.java">
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/java/io/ObjectInputStream.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="55" column="70" selection-start-line="55" selection-start-column="70" selection-end-line="55" selection-end-column="70" />
+        <state relative-caret-position="248">
+          <caret line="916" column="24" selection-start-line="916" selection-start-column="24" selection-end-line="916" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#420#421#0" expanded="true" />
           </folding>
         </state>
       </provider>
