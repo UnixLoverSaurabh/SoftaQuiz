@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Messages;
 
 import java.io.Serializable;
 import java.security.Key;

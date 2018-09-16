@@ -1,62 +1,47 @@
 package com.company;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
+import com.company.Messages.Frame;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import java.io.*;
 import java.net.Socket;
-import java.security.InvalidKeyException;
 import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
 
-public class Main {
+public class Main extends Application {
 
-    public static void main(String[] args) throws InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, NoSuchPaddingException {
-        try(Socket socket = new Socket("localhost", 5700)){
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter name of client.");
-            String username = scanner.nextLine();
+    public static Socket socket;
+    public static ObjectOutputStream stringToEcho;
+    public static ObjectInputStream echoes;
+    public static Key key;
 
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        setSocket();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/company/fxml/registration_form.fxml"));
+        primaryStage.setTitle("Registration Form FXML Application");
+        primaryStage.getIcons().add(new Image("/com/company/icons/icon.png"));
+        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.show();
 
-            new Main().sendMessage(socket, scanner, username);
-        }
-        catch (IOException e){
-            System.out.println("Client Error: " + e.getMessage());
-        }
     }
 
-    private void sendMessage(Socket socket, Scanner scanner, String username) throws IOException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException {
-        ObjectOutputStream stringToEcho = new ObjectOutputStream(socket.getOutputStream());
-        ObjectInputStream echoes = new ObjectInputStream(socket.getInputStream());
+    public static void main(String[] args) {
+            launch(args);
+    }
 
-        Frame frame = null;
+    private static void setSocket() throws IOException {
+        socket = new Socket("localhost", 5700);
+        stringToEcho = new ObjectOutputStream(socket.getOutputStream());
+        echoes = new ObjectInputStream(socket.getInputStream());
         try {
-            frame = (Frame) echoes.readObject();
+            Frame frame = (Frame) echoes.readObject();
+            key = frame.key;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
-        Key key = frame.key;
-
-        while (true) {
-            System.out.println("Enter message");
-            String text = scanner.nextLine();
-            MessageEncryption mess = new MessageEncryption(text, key);
-            String cipherText = mess.getMessage();
-            String from = "Client - " + username;
-            Message message = new Message(cipherText, from, "Server", key);
-            stringToEcho.writeObject(message);
-            stringToEcho.flush();
-
-            Message messageServer;
-            try {
-                messageServer = (Message) echoes.readObject();
-                System.out.println("Received server input : ");
-                MessageDecryption messDec = new MessageDecryption(messageServer.getMessage(), key);
-                System.out.println(messDec.getMessage() + "FROM " + messageServer.getFrom());
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

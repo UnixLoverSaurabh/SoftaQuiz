@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.Messages.*;
+
 import javax.crypto.*;
 import java.io.*;
 import java.net.Socket;
@@ -17,6 +19,7 @@ public class Echoer extends Thread {
     @Override
     public void run(){
         try{
+            DBConnect connect = new DBConnect();
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 
@@ -30,8 +33,53 @@ public class Echoer extends Thread {
             Frame frame = new Frame();
             frame.key = key;
             output.writeObject(frame);
+            output.flush();
             System.out.println("Key has been sent to client");
 
+            MessageDecryption username;
+            MessageDecryption email;
+            MessageDecryption password;
+            try {
+                boolean val = true;
+                while (val) {
+                    MessageAuth messageFirstPacket = (MessageAuth) input.readObject();
+                    username = new MessageDecryption(messageFirstPacket.getUsername(), key);
+                    email = new MessageDecryption(messageFirstPacket.getEmail(), key);
+                    password = new MessageDecryption(messageFirstPacket.getPassword(), key);
+                    System.out.println("Username: " + username.getMessage());
+                    System.out.println("Email: " + email.getMessage());
+                    System.out.println("Password : " + password.getMessage());
+
+                    MessageEncryption messEnc;
+                    // Validating for Sign Up
+                    if (!email.getMessage().equals("NoNeedLoginEmail")) {
+                        if (!connect.checkUser(username.getMessage(), email.getMessage())) {
+                            messEnc = new MessageEncryption("Username or email already exists.", key);
+                            System.out.println("Username or email already exists. Form Error!");
+                        } else {
+                            messEnc = new MessageEncryption("Registration Successful!", key);
+                            System.out.println("Registration Successful!");
+                            connect.newUser(username.getMessage(), email.getMessage(), password.getMessage());
+                            val = false;
+                        }
+                    } // Validating for Sign In
+                    else {
+                        if (connect.checkUserLogIn(username.getMessage(), password.getMessage())) {
+                            messEnc = new MessageEncryption("Not a valid combination", key);
+                            System.out.println("Not a valid combination. Form Error!");
+                        } else {
+                            messEnc = new MessageEncryption("Login Successful!", key);
+                            System.out.println("Login Successful!");
+                            val = false;
+                        }
+                    }
+                    Message messageSend = new Message(messEnc.getMessage(), "server", username.getMessage(), key);
+                    output.writeObject(messageSend);
+                    output.flush();
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
 
             while (true) {
                 Message message = null;
