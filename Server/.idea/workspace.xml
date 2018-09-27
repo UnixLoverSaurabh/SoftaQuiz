@@ -5,42 +5,10 @@
       <change afterPath="$PROJECT_DIR$/../../Don/Try/.idea/libraries/mysql_mysql_connector_java_8_0_12.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Don/Try/src/sample/FXSandbox.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Don/Try/src/sample/FXTimerBinding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../untitled/untitled.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/ClientBoth.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/ClientBoth.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/AlertHelper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_dashBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_dashBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_login.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_registration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Messages/MessageAuth.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Messages/MessageAuth.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Messages/MessageDecryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Messages/MessageDecryption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Messages/MessageEncryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Messages/MessageEncryption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/fxml/dashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/fxml/dashBoard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/fxml/login_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/fxml/login_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/fxml/registration_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/fxml/registration_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_dashBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_dashBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_login.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Messages/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Messages/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Messages/MessageAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Messages/MessageAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Messages/MessageDecryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Messages/MessageDecryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Messages/MessageEncryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Messages/MessageEncryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/fxml/dashBoard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/fxml/dashBoard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/fxml/login_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/fxml/login_form.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/fxml/registration_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/fxml/registration_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_QuestionsToStudents$TimerTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/out/production/ClientBoth/com/company/Controllers/Controller_QuestionsToStudents$TimerTime.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_QuestionsToStudents.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/com/company/Controllers/Controller_QuestionsToStudents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ServeBoth/com/company/DBConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ServeBoth/com/company/DBConnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Echoer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Echoer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Messages/MessageDecryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Messages/MessageDecryption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Messages/MessageEncryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ServeBoth/com/company/Messages/MessageEncryption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/DBConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/DBConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Echoer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Echoer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Messages/MessageDecryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Messages/MessageDecryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Messages/MessageEncryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Messages/MessageEncryption.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,7 +93,8 @@
           <entry key="project.open.time.43" value="1" />
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.51" value="1" />
-          <entry key="project.opened" value="28" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -155,11 +124,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+            <state relative-caret-position="85">
+              <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/DBConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5015">
+            <state relative-caret-position="136">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -182,7 +151,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Echoer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4550">
+            <state relative-caret-position="4879">
               <caret line="301" column="124" selection-start-line="301" selection-start-column="124" selection-end-line="301" selection-end-column="124" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -195,12 +164,12 @@
         <entry file="file://$PROJECT_DIR$/src/com/company/Messages/MessageEncryption.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Messages/MessageDecryption.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
@@ -260,6 +229,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -290,15 +261,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538024689634" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538042536533" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Client" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -353,9 +322,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27121213" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.27575758" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -365,7 +333,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32932332" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924242" weight="0.39097744" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924242" visible="true" weight="0.39097744" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -465,19 +433,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/DBConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5015">
+        <state relative-caret-position="136">
           <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -487,7 +445,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Echoer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4550">
+        <state relative-caret-position="4879">
           <caret line="301" column="124" selection-start-line="301" selection-start-column="124" selection-end-line="301" selection-end-column="124" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -498,7 +456,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/Messages/MessageEncryption.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -506,6 +464,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

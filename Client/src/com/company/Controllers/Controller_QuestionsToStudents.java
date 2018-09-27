@@ -147,7 +147,7 @@ public class Controller_QuestionsToStudents implements Initializable {
         public void run() {
             System.out.println("Task scheduled.");
             timer = new Timer();
-            timer.schedule(new RemindTask(), Integer.parseInt(Controller_Index_Student.getDuration()) * 1000* 10 );
+            timer.schedule(new RemindTask(), Integer.parseInt(Controller_Index_Student.getDuration()) * 1000* 60 );
             Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
                 second = LocalDateTime.now().getSecond();
                 minute = LocalDateTime.now().getMinute();
