@@ -24,10 +24,10 @@ public class MessageDecryption {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 
             // decrypt the ciphertext using the same key
-            System.out.println("\nStart decryption");
+            //System.out.println("\nStart decryption");
             cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] newPlainText = cipher.doFinal(cipherText);
-            System.out.println("Finish decryption: ");
+            //System.out.println("Finish decryption: ");
 
             System.out.println(new String(newPlainText, StandardCharsets.UTF_8));
             this.message = new String(newPlainText, StandardCharsets.UTF_8);
@@ -41,3 +41,26 @@ public class MessageDecryption {
         return message;
     }
 }
+//            while (true) {
+//                Message message = null;
+//                MessageDecryption mess = null;
+//                String plainMessage = "";
+//                try {
+//                    message = (Message) input.readObject();
+//                    mess = new MessageDecryption(message.getMessage(), key);
+//                    plainMessage = mess.getMessage();
+//                    if (plainMessage.equals("exit")) {
+//                        socket.close();
+//                        break;
+//                    }
+//                } catch (ClassNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("Received client input : ");
+//                System.out.println(plainMessage + " FROM " + message.getFrom());
+//
+//                MessageEncryption messEnc = new MessageEncryption("Server thik chal raha hai", key);
+//                Message messageSend = new Message(messEnc.getMessage(), "server", message.getFrom(), key);
+//                output.writeObject(messageSend);
+//                output.flush();
+//            }

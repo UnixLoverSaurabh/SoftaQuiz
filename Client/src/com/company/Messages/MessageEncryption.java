@@ -16,7 +16,7 @@ public class MessageEncryption {
         byte[] plainText = message.getBytes(StandardCharsets.UTF_8);
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         // encrypt using the key and the plaintext
-        System.out.println("\nStart encryption");
+        //System.out.println("\nStart encryption");
 
         //  Initializes the Cipher object
 
@@ -30,7 +30,7 @@ public class MessageEncryption {
             str2 +=(char)b;
         }
         this.message = str2;
-        System.out.println("Finish encryption: ");
+        //System.out.println("Finish encryption: ");
     }
 
     public String getMessage() {

@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.Messages.*;
+import javafx.collections.ObservableList;
 
 import javax.crypto.*;
 import java.io.*;
@@ -8,6 +9,10 @@ import java.net.Socket;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class Echoer extends Thread {
     private Socket socket;
@@ -22,6 +27,7 @@ public class Echoer extends Thread {
             DBConnect connect = new DBConnect();
             ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
             ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+            String sessionClientUsername = null;
 
             // get a AES private key  (Generates the key)
             System.out.println("\nStart generating AES key");
@@ -36,10 +42,10 @@ public class Echoer extends Thread {
             output.flush();
             System.out.println("Key has been sent to client");
 
-            MessageDecryption username;
-            MessageDecryption email;
-            MessageDecryption password;
             try {
+                MessageDecryption username;
+                MessageDecryption email;
+                MessageDecryption password;
                 boolean val = true;
                 while (val) {
                     MessageAuth messageFirstPacket = (MessageAuth) input.readObject();
@@ -60,16 +66,18 @@ public class Echoer extends Thread {
                             messEnc = new MessageEncryption("Registration Successful!", key);
                             System.out.println("Registration Successful!");
                             connect.newUser(username.getMessage(), email.getMessage(), password.getMessage());
+                            sessionClientUsername = username.getMessage();
                             val = false;
                         }
                     } // Validating for Sign In
                     else {
-                        if (connect.checkUserLogIn(username.getMessage(), password.getMessage())) {
+                        if (!connect.checkUserLogIn(username.getMessage(), password.getMessage())) {
                             messEnc = new MessageEncryption("Not a valid combination", key);
                             System.out.println("Not a valid combination. Form Error!");
                         } else {
                             messEnc = new MessageEncryption("Login Successful!", key);
                             System.out.println("Login Successful!");
+                            sessionClientUsername = username.getMessage();
                             val = false;
                         }
                     }
@@ -81,33 +89,278 @@ public class Echoer extends Thread {
                 e.printStackTrace();
             }
 
+            String pageType = (String) input.readObject();
             while (true) {
-                Message message = null;
-                MessageDecryption mess = null;
-                String plainMessage = "";
-                try {
-                    message = (Message) input.readObject();
-                    mess = new MessageDecryption(message.getMessage(), key);
-                    plainMessage = mess.getMessage();
-                    if (plainMessage.equals("exit")) {
-                        socket.close();
+                int switchFlag = 0;
+                int switchStudent = 0;
+                System.out.println("Entering in Page type " + pageType);
+                switch (pageType){
+                    case "Teachers": {
+                        System.out.println("Entering in Teacher type ");
+                        while (true) {
+                            System.out.println("going to read input messagetype");
+                            String messageType = (String) input.readObject();
+                            switch (messageType) {
+                                case "TeacherIndexPage":
+                                    System.out.println("Welcome to teachers case :");
+                                    ArrayList list = connect.returnStatusTeacher(sessionClientUsername);
+
+                                    // list me database se string le lo
+                                    MessageEncryption usernameEnc = new MessageEncryption((String) list.get(0), key);
+                                    MessageEncryption nameEnc = new MessageEncryption((String) list.get(1), key);
+                                    MessageEncryption genderEnc = new MessageEncryption((String) list.get(2), key);
+                                    MessageEncryption dobEnc = new MessageEncryption((String) list.get(3), key);
+                                    MessageEncryption contactEnc = new MessageEncryption((String) list.get(4), key);
+                                    MessageEncryption qualificationEnc = new MessageEncryption((String) list.get(5), key);
+                                    MessageEncryption collegeEnc = new MessageEncryption((String) list.get(6), key);
+                                    MessageEncryption optionalEnc = new MessageEncryption((String) list.get(7), key);
+                                    MessageStatus messageStatusSend = new MessageStatus(usernameEnc.getMessage(), nameEnc.getMessage(), genderEnc.getMessage(), dobEnc.getMessage(), contactEnc.getMessage(), qualificationEnc.getMessage(), collegeEnc.getMessage(), optionalEnc.getMessage());
+                                    output.writeObject(messageStatusSend);
+                                    output.flush();
+                                    break;
+                                case "TeacherTable":
+                                    List<String[]> data1 = connect.returnTeacherTables(sessionClientUsername);
+                                    List<String[]> data2 = connect.returnTeacherTables(sessionClientUsername);
+                                    //System.out.println(rowList.get(1)[1]);
+                                    TablesOfStudent tablesOfStudent = new TablesOfStudent(sessionClientUsername, data1, data2);
+                                    output.writeObject(tablesOfStudent);
+                                    output.flush();
+                                    break;
+                                case "MessageStatus":
+                                    System.out.println("Welcome to MessageStatus case of Teacher:");
+                                    // Receive data from client to update his/her status
+                                    MessageStatus messageStatus;
+                                    messageStatus = (MessageStatus) input.readObject();
+
+                                    MessageDecryption usernameDec = new MessageDecryption(messageStatus.getUsername(), key);
+                                    MessageDecryption nameDec = new MessageDecryption(messageStatus.getName(), key);
+                                    MessageDecryption genderDec = new MessageDecryption(messageStatus.getGender(), key);
+                                    MessageDecryption dobDec = new MessageDecryption(messageStatus.getDob(), key);
+                                    MessageDecryption contactDec = new MessageDecryption(messageStatus.getContact(), key);
+                                    MessageDecryption qualificationDec = new MessageDecryption(messageStatus.getQualification(), key);
+                                    MessageDecryption collegeDec = new MessageDecryption(messageStatus.getCollege(), key);
+                                    MessageDecryption optionalDec = new MessageDecryption(messageStatus.getOptional(), key);
+
+                                    String username = usernameDec.getMessage();
+                                    String name = nameDec.getMessage();
+                                    String gender = genderDec.getMessage();
+                                    String dob = dobDec.getMessage();
+                                    String contact = contactDec.getMessage();
+                                    String qualification = qualificationDec.getMessage();
+                                    String college = collegeDec.getMessage();
+                                    String optional = optionalDec.getMessage();
+
+                                    boolean stat = connect.updateTeacherStatus(username, name, gender, dob, contact, qualification, college, optional);
+                                    MessageEncryption messStatusEnc;
+                                    if (stat) {
+                                        messStatusEnc = new MessageEncryption("Status updated successfully", key);
+                                    } else {
+                                        messStatusEnc = new MessageEncryption("Unable to update status", key);
+                                    }
+                                    Message messageStatusUpdate = new Message(messStatusEnc.getMessage(), "server", username, key);
+                                    output.writeObject(messageStatusUpdate);
+                                    output.flush();
+                                    break;
+
+                                case "MessagePopUpTopic":
+                                    System.out.println("Welcome to MessagePopUpTopic case :");
+                                    MessagePopUpTopic messagePopUpTopic;
+                                    messagePopUpTopic = (MessagePopUpTopic) input.readObject();
+                                    MessageDecryption encUsername = new MessageDecryption(messagePopUpTopic.getUsername(), key);
+                                    MessageDecryption encSubject = new MessageDecryption(messagePopUpTopic.getSubject(), key);
+                                    MessageDecryption encTopic = new MessageDecryption(messagePopUpTopic.getTopic(), key);
+                                    MessageDecryption encDate = new MessageDecryption(messagePopUpTopic.getDate(), key);
+                                    MessageDecryption encNoOfSingleCorrect = new MessageDecryption(messagePopUpTopic.getNoOfSingleCorrect(), key);
+                                    MessageDecryption encSingleTimeLimit = new MessageDecryption(messagePopUpTopic.getSingleTimeLimit(), key);
+                                    MessageDecryption encNoOfMultipleCorrect = new MessageDecryption(messagePopUpTopic.getNoOfMultipleCorrect(), key);
+                                    MessageDecryption encMultipleTimeLimit = new MessageDecryption(messagePopUpTopic.getMultipleTimeLimit(), key);
+                                    MessageDecryption encNoOfTrueFalse = new MessageDecryption(messagePopUpTopic.getNoOfTrueFalse(), key);
+                                    MessageDecryption encTrueFalseTimeLimit = new MessageDecryption(messagePopUpTopic.getTrueFalseTimeLimit(), key);
+
+                                    String Username = encUsername.getMessage();
+                                    String Subject = encSubject.getMessage();
+                                    String Topic = encTopic.getMessage();
+                                    String Date = encDate.getMessage();
+                                    String NoOfSingleCorrect = encNoOfSingleCorrect.getMessage();
+                                    String SingleTimeLimit = encSingleTimeLimit.getMessage();
+                                    String NoOfMultipleCorrect = encNoOfMultipleCorrect.getMessage();
+                                    String MultipleTimeLimit = encMultipleTimeLimit.getMessage();
+                                    String NoOfTrueFalse = encNoOfTrueFalse.getMessage();
+                                    String TrueFalseTimeLimit = encTrueFalseTimeLimit.getMessage();
+
+                                    connect.insertNewSubject(Username, Subject);
+                                    int id = connect.getIdFromTeacher(Username, Subject);
+                                    MessageEncryption messPopUpEnc;
+                                    if (id != 0) {
+                                        connect.insertNewTopic(id, Topic, Date, NoOfSingleCorrect, SingleTimeLimit, NoOfMultipleCorrect, MultipleTimeLimit, NoOfTrueFalse, TrueFalseTimeLimit);
+                                        messPopUpEnc = new MessageEncryption("New topic has been added successfully", key);
+                                    } else {
+                                        messPopUpEnc = new MessageEncryption("Database error while coding", key);
+                                        System.out.println("Database error while coding");
+                                    }
+                                    Message messageSend = new Message(messPopUpEnc.getMessage(), "server", Username, key);
+                                    output.writeObject(messageSend);
+                                    output.flush();
+                                    break;
+                                case "TeacherQueAns":
+                                    System.out.println("This is for receving Question answer from teacher :");
+                                    TeacherQueAns teacherQueAns = (TeacherQueAns) input.readObject();
+                                    MessageDecryption encUsernameQueAns = new MessageDecryption(teacherQueAns.getUsername(), key);
+                                    MessageDecryption encSubjectQueAns = new MessageDecryption(teacherQueAns.getSubject(), key);
+                                    MessageDecryption encTopicQueAns = new MessageDecryption(teacherQueAns.getTopic(), key);
+                                    MessageDecryption encQuestion = new MessageDecryption(teacherQueAns.getQuestion(), key);
+                                    MessageDecryption encOption1 = new MessageDecryption(teacherQueAns.getOption1(), key);
+                                    MessageDecryption encOption2 = new MessageDecryption(teacherQueAns.getOption2(), key);
+                                    MessageDecryption encOption3 = new MessageDecryption(teacherQueAns.getOption3(), key);
+                                    MessageDecryption encOption4 = new MessageDecryption(teacherQueAns.getOption4(), key);
+                                    MessageDecryption encAnswer = new MessageDecryption(teacherQueAns.getAnswer(), key);
+                                    MessageDecryption encType = new MessageDecryption(teacherQueAns.getType(), key);
+
+                                    String queAnsUsername = encUsernameQueAns.getMessage();
+                                    String queAnsSubject = encSubjectQueAns.getMessage();
+                                    String queAnsTopic = encTopicQueAns.getMessage();
+                                    String queAnsQuestion = encQuestion.getMessage();
+                                    String queAnsOption1 = encOption1.getMessage();
+                                    String queAnsOption2 = encOption2.getMessage();
+                                    String queAnsOption3 = encOption3.getMessage();
+                                    String queAnsOption4 = encOption4.getMessage();
+                                    String queAnsAnswer = encAnswer.getMessage();
+                                    String queAnsType = encType.getMessage();
+
+                                    boolean itsOK = connect.addQueAnsFromTeacher(queAnsUsername, queAnsSubject, queAnsTopic, queAnsQuestion, queAnsOption1, queAnsOption2, queAnsOption3, queAnsOption4, queAnsAnswer, queAnsType);
+                                    MessageEncryption messQueAnsEnc;
+                                    if (itsOK) {
+                                        messQueAnsEnc = new MessageEncryption("Question added successfully", key);
+                                    } else {
+                                        messQueAnsEnc = new MessageEncryption("Sorry this question has not been added", key);
+                                        System.out.println("Database error while coding");
+                                    }
+                                    Message messageQueAnsSend = new Message(messQueAnsEnc.getMessage(), "server", queAnsUsername, key);
+                                    output.writeObject(messageQueAnsSend);
+                                    output.flush();
+                                    break;
+                                default:
+                                    System.out.println("This is default Teacher case" + messageType);
+                                    switchFlag = 1;
+                                    pageType = messageType;
+                                    break;
+                            }
+                            if (switchFlag == 1)
+                                break;
+                        }
                         break;
                     }
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Received client input : ");
-                System.out.println(plainMessage + " FROM " + message.getFrom());
+                    case "Students": {
+                        System.out.println("Entering in Student type ");
+                        while (true) {
+                            System.out.println("Going to read student messagetype");
+                            String messageType = (String) input.readObject();
 
-                MessageEncryption messEnc = new MessageEncryption("Server thik chal raha hai", key);
-                Message messageSend = new Message(messEnc.getMessage(), "server", message.getFrom(), key);
-                output.writeObject(messageSend);
-                output.flush();
+                            switch (messageType) {
+                                case "StudentIndexPage":
+                                    System.out.println("Welcome to Student case :");
+                                    ArrayList list = connect.returnStatusTeacher(sessionClientUsername);
+
+                                    MessageEncryption usernameEnc = new MessageEncryption((String) list.get(0), key);
+                                    MessageEncryption nameEnc = new MessageEncryption((String) list.get(1), key);
+                                    MessageEncryption genderEnc = new MessageEncryption((String) list.get(2), key);
+                                    MessageEncryption dobEnc = new MessageEncryption((String) list.get(3), key);
+                                    MessageEncryption contactEnc = new MessageEncryption((String) list.get(4), key);
+                                    MessageEncryption qualificationEnc = new MessageEncryption((String) list.get(5), key);
+                                    MessageEncryption collegeEnc = new MessageEncryption((String) list.get(6), key);
+                                    MessageEncryption optionalEnc = new MessageEncryption((String) list.get(7), key);
+                                    MessageStatus messageStatusSend = new MessageStatus(usernameEnc.getMessage(), nameEnc.getMessage(), genderEnc.getMessage(), dobEnc.getMessage(), contactEnc.getMessage(), qualificationEnc.getMessage(), collegeEnc.getMessage(), optionalEnc.getMessage());
+                                    output.writeObject(messageStatusSend);
+                                    output.flush();
+                                    break;
+                                case "StudentTable":
+                                    List<String[]> data1 = connect.returnStudentTables();
+                                    List<String[]> data2 = connect.returnStudentTables();
+                                    System.out.println(data1);
+                                    TablesOfStudent tablesOfStudent = new TablesOfStudent(sessionClientUsername, data1, data2);
+                                    output.writeObject(tablesOfStudent);
+                                    output.flush();
+                                    break;
+                                case "GiveQuestions":
+                                    GiveQuestions giveQuestions = (GiveQuestions) input.readObject();
+                                    System.out.println("Student Name " +giveQuestions.getUsername());
+                                    List<String[]> rowList = connect.returnQuestionsOfThisTopic(giveQuestions.getTeacherUsername(), giveQuestions.getSubject(), giveQuestions.getTopic());
+//                                    for (int i = 0; i < rowList.size(); i++) {
+//                                        System.out.println(rowList.get(i)[0] + " "+ rowList.get(i)[1] + " "+ rowList.get(i)[2] + " "+ rowList.get(i)[3]);
+//                                    }
+                                    System.out.println(connect.getA());
+                                    QuestionsAndOptions questionsAndOptions = new QuestionsAndOptions(rowList);
+                                    output.writeObject(questionsAndOptions);
+                                    output.flush();
+                                    break;
+                                case "StudentHashMap":
+                                    int count = 0;
+                                    HashMap<Integer, String> A = (HashMap<Integer, String>) input.readObject();
+                                    System.out.println(A);
+                                    for (int keyCol : A.keySet()) {
+                                        if (A.get(keyCol).equals(connect.getA().get(keyCol))) {
+                                            System.out.println("They are equal " + A.get(keyCol) + " having key " + keyCol);
+                                            count++;
+                                        }
+                                    }
+                                    output.writeObject(count);
+                                    output.flush();
+                                    break;
+                                case "MessageStatus":
+                                    System.out.println("Welcome to MessageStatus case of Student:");
+                                    // Receive data from client to update his/her status
+                                    MessageStatus messageStatus;
+                                    messageStatus = (MessageStatus) input.readObject();
+
+                                    MessageDecryption usernameDec = new MessageDecryption(messageStatus.getUsername(), key);
+                                    MessageDecryption nameDec = new MessageDecryption(messageStatus.getName(), key);
+                                    MessageDecryption genderDec = new MessageDecryption(messageStatus.getGender(), key);
+                                    MessageDecryption dobDec = new MessageDecryption(messageStatus.getDob(), key);
+                                    MessageDecryption contactDec = new MessageDecryption(messageStatus.getContact(), key);
+                                    MessageDecryption qualificationDec = new MessageDecryption(messageStatus.getQualification(), key);
+                                    MessageDecryption collegeDec = new MessageDecryption(messageStatus.getCollege(), key);
+                                    MessageDecryption optionalDec = new MessageDecryption(messageStatus.getOptional(), key);
+
+                                    String username = usernameDec.getMessage();
+                                    String name = nameDec.getMessage();
+                                    String gender = genderDec.getMessage();
+                                    String dob = dobDec.getMessage();
+                                    String contact = contactDec.getMessage();
+                                    String qualification = qualificationDec.getMessage();
+                                    String college = collegeDec.getMessage();
+                                    String optional = optionalDec.getMessage();
+
+                                    boolean stat = connect.updateTeacherStatus(username, name, gender, dob, contact, qualification, college, optional);
+                                    MessageEncryption messStatusEnc;
+                                    if (stat) {
+                                        messStatusEnc = new MessageEncryption("Status updated successfully", key);
+                                    } else {
+                                        messStatusEnc = new MessageEncryption("Unable to update status", key);
+                                    }
+                                    Message messageStatusUpdate = new Message(messStatusEnc.getMessage(), "server", username, key);
+                                    output.writeObject(messageStatusUpdate);
+                                    output.flush();
+                                    break;
+
+                                default:
+                                    switchStudent = 1;
+                                    pageType = messageType;
+                                    break;
+                            }
+                            if (switchStudent == 1)
+                                break;
+                        }
+                        break;
+                    }
+                    default:
+                        System.out.println("This should not be there");
+                        break;
+                }
             }
         } catch (IOException e){
             System.out.println("Ooops : " + e.getMessage());
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | InvalidKeyException | NoSuchPaddingException e) {
+        } catch (NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | InvalidKeyException | NoSuchPaddingException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
             try {

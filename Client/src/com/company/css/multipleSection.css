@@ -1,0 +1,15 @@
+.SingleChoiceCorrect{
+-fx-background-image:url('/sample/icons/single_answer.jpg');
+-fx-background-size:cover;
+
+}
+.MultipleChoiceCorrect{
+-fx-background-image:url('/sample/icons/multiple_answer.jpg');
+-fx-background-size:cover;
+}
+
+.TrueFalse{
+-fx-background-image:url('/sample/icons/true_false_answer.jpg');
+-fx-background-size:cover;
+
+}

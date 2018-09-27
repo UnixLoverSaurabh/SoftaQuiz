@@ -17,12 +17,13 @@ public class Main extends Application {
     public static ObjectOutputStream stringToEcho;
     public static ObjectInputStream echoes;
     public static Key key;
+    public static String sessionUsername;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         setSocket();
         Parent root = FXMLLoader.load(getClass().getResource("/com/company/fxml/registration_form.fxml"));
-        primaryStage.setTitle("Registration Form FXML Application");
+        primaryStage.setTitle("Registration Form");
         primaryStage.getIcons().add(new Image("/com/company/icons/icon.png"));
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();

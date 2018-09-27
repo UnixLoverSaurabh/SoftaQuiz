@@ -22,4 +22,3 @@ public class Message implements Serializable {
         return from;
     }
 }
-

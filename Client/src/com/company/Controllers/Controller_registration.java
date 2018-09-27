@@ -5,6 +5,7 @@ import com.company.Messages.Message;
 import com.company.Messages.MessageAuth;
 import com.company.Messages.MessageDecryption;
 import com.company.Messages.MessageEncryption;
+import com.company.alertBox.AlertHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,9 +26,9 @@ import java.net.URL;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class Controller_registration implements Initializable {
-
     @FXML
     private TextField nameField;
 
@@ -43,6 +44,13 @@ public class Controller_registration implements Initializable {
     @FXML
     private Button switchToSignIn;
 
+
+    private boolean validateEmailAddress(String emailID) {
+        String regex = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(emailID).matches();
+    }
+
     @FXML
     protected void handleSubmitButtonAction(ActionEvent event) throws IOException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException {
         Stage stage;
@@ -51,6 +59,7 @@ public class Controller_registration implements Initializable {
             stage = (Stage) switchToSignIn.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/com/company/fxml/login_form.fxml"));
             Scene scene = new Scene(root, 800, 500);
+            stage.setTitle("Login Form");
             stage.setScene(scene);
             stage.show();
             return;
@@ -62,6 +71,10 @@ public class Controller_registration implements Initializable {
         }
         if(emailField.getText().isEmpty()) {
             AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Please enter your email id");
+            return;
+        }
+        if (!validateEmailAddress(emailField.getText())) {
+            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Please enter a valid email id");
             return;
         }
         if(passwordField.getText().isEmpty()) {
@@ -93,9 +106,11 @@ public class Controller_registration implements Initializable {
                 AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Username or email already exists.");
             } else {
                 AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!", "Welcome " + nameField.getText());
+                Main.sessionUsername = nameField.getText();
                 stage = (Stage) switchToSignIn.getScene().getWindow();
                 root = FXMLLoader.load(getClass().getResource("/com/company/fxml/dashBoard.fxml"));
-                Scene scene = new Scene(root, 800, 500);
+                Scene scene = new Scene(root);
+                stage.setTitle("Dashboard");
                 stage.setScene(scene);
                 stage.show();
             }
@@ -106,18 +121,7 @@ public class Controller_registration implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // TODO
+
     }
 }
 
-class AlertHelper {
-
-    public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.initOwner(owner);
-        alert.show();
-    }
-}

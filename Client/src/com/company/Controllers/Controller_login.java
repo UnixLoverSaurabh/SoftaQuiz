@@ -5,6 +5,7 @@ import com.company.Messages.Message;
 import com.company.Messages.MessageAuth;
 import com.company.Messages.MessageDecryption;
 import com.company.Messages.MessageEncryption;
+import com.company.alertBox.AlertHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,14 +17,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
 
 public class Controller_login {
     @FXML
@@ -46,6 +45,7 @@ public class Controller_login {
             stage = (Stage) switchToSignUp.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/com/company/fxml/registration_form.fxml"));
             Scene scene = new Scene(root, 800, 500);
+            stage.setTitle("Registration Form");
             stage.setScene(scene);
             stage.show();
             return;
@@ -84,49 +84,16 @@ public class Controller_login {
                 AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Form Error!", "Not a valid combination.");
             } else {
                 AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Login Successful!", "Welcome " + nameField.getText());
+                Main.sessionUsername = nameField.getText();
                 stage = (Stage) switchToSignUp.getScene().getWindow();
                 root = FXMLLoader.load(getClass().getResource("/com/company/fxml/dashBoard.fxml"));
+                stage.setTitle("Dashboard");
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
-    }
-
-    private void sendMessage(String username, String password) throws IOException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException {
-
-        MessageEncryption messUsername = new MessageEncryption(username, Main.key);
-        MessageEncryption messPassword = new MessageEncryption(password, Main.key);
-
-        String usernameEnc = messUsername.getMessage();
-        String passwordEnc = messPassword.getMessage();
-
-        MessageAuth messageFirstPacket = new MessageAuth(usernameEnc, "NoNeedLoginEmail", passwordEnc);
-        Main.stringToEcho.writeObject(messageFirstPacket);
-        Main.stringToEcho.flush();
-
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter message");
-            String text = scanner.nextLine();
-            MessageEncryption mess = new MessageEncryption(text, Main.key);
-            String cipherText = mess.getMessage();
-            String from = "Client - " + username;
-            Message message = new Message(cipherText, from, "Server", Main.key);
-            Main.stringToEcho.writeObject(message);
-            Main.stringToEcho.flush();
-
-            Message messageServer;
-            try {
-                messageServer = (Message) Main.echoes.readObject();
-                System.out.println("Received server input for login: ");
-                MessageDecryption messDec = new MessageDecryption(messageServer.getMessage(), Main.key);
-                System.out.println(messDec.getMessage() + "FROM " + messageServer.getFrom());
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

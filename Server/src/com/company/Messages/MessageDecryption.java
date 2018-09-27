@@ -24,10 +24,10 @@ public class MessageDecryption {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
 
             // decrypt the ciphertext using the same key
-            System.out.println("\nStart decryption");
+            //System.out.println("\nStart decryption");
             cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] newPlainText = cipher.doFinal(cipherText);
-            System.out.println("Finish decryption: ");
+            //System.out.println("Finish decryption: ");
 
             System.out.println(new String(newPlainText, StandardCharsets.UTF_8));
             this.message = new String(newPlainText, StandardCharsets.UTF_8);

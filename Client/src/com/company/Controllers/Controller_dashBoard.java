@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,15 +34,26 @@ public class Controller_dashBoard implements Initializable {
     @FXML
     private Button btnClasses;
 
-    //my bad - the freaking mouse event
+    private Stage stage;
+
+    //The freaking mouse event
     @FXML
-    private void handleButtonClicks(javafx.event.ActionEvent mouseEvent) {
+    private void handleButtonClicks(javafx.event.ActionEvent mouseEvent) throws IOException {
         if (mouseEvent.getSource() == btnDashboard) {
-            loadStage("/home/fxml/Dashboard.fxml");
+            Main.stringToEcho.writeObject("Teachers");
+            Main.stringToEcho.flush();
+            loadStage("/com/company/fxml/index.fxml");
+            System.out.println("Teacher index page");
         } else if (mouseEvent.getSource() == btnStudents) {
-            loadStage("/home/fxml/Students.fxml");
+            Main.stringToEcho.writeObject("Students");
+            Main.stringToEcho.flush();
+            loadStage("/com/company/fxml/index_Student.fxml");
+            System.out.println("Student index page");
         } else if (mouseEvent.getSource() == btn_Timetable) {
-            loadStage("/home/fxml/Timetable.fxml");
+            Main.stringToEcho.writeObject("TimeTable");
+            Main.stringToEcho.flush();
+            loadStage("/com/company/fxml/Timetable.fxml");
+            System.out.println("Time table page");
         }
     }
 
@@ -53,9 +65,9 @@ public class Controller_dashBoard implements Initializable {
     private void loadStage(String fxml) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(fxml));
-            Stage stage = new Stage();
+            stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.getIcons().add(new Image("/home/icons/icon.png"));
+            stage.getIcons().add(new Image("/com/company/icons/icon.png"));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         } catch (IOException e) {

@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         try(ServerSocket serverSocket = new ServerSocket(5700)){
             System.out.println("Server running");
+
             while(true){
                 new Echoer(serverSocket.accept()).start();
             }
