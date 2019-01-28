@@ -17,4 +17,4 @@
 
 
 ### A random picture from our project
-![alt text](https://github.com/UnixLoverSaurabh/SoftaQuiz/image/demo.png)
+![alt text](https://github.com/UnixLoverSaurabh/SoftaQuiz/blob/master/image/demo.png)
